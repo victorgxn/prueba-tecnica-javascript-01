@@ -10,7 +10,7 @@ const cargarLibros = async () => {
 	datos.library.forEach((item) => {
 		const libro = item.book;
 		librosHTML += `
-		<div class="col-md-3 col-sm-6 mb-4">
+		<div class="col-md-4 col-sm-6 mb-4">
 			<div class="border p-3 d-flex flex-column align-items-center">
 					<img class="img-fluid rounded mb-2" src="${libro.cover}">
 					<h5 class="font-weight-bold titulo-libro text-center">${libro.title}</h5>
