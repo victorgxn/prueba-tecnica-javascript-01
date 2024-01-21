@@ -1,0 +1,29 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+}
+
+h1 {
+  background: #f05;
+}
+
+.titulo-libro {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: white;
+}
+
+.contadorLibros {
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+#agregar-lista {
+  background: #f05;
+  color: #ffffff;
+  border-radius: 10px;
+}
+
+#lectura {
+  border: 4px solid #f05
+}
