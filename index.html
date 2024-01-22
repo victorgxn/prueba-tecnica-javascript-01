@@ -14,17 +14,47 @@
 </head>
 
 <body>
-	<div class="container my-4 text-center"> <!-- La clase text-center centrará tu título -->
-		<h1 class="text-light mb-4 font-weight-bold">LA LIBRERIA DE LISEEZ <i class="bi bi-book"></i></h1>
-		<!-- text-light hará el texto claro -->
+	<div class="container my-4 text-center">
+		<h1 class="text-light mb-4 font-weight-bold">LA LIBRERIA DE VICTORG</h1>
 	</div>
 
-	<h4 id="libros-lista-lectura"></h4>
-	<div class="container my-4">
-		<h2 id="libros-disponibles" class="contadorLibros"></h2>
-		<!-- Fila principal -->
-		<div class="row">
 
+	<div class="container my-4">
+		<!-- Contador libros disponibles -->
+		<h2 id="libros-disponibles" class="contadorLibros"></h2>
+		<!-- Contenedor para libros en la lista de lectura -->
+		<h4 id="libros-lista-lectura" class="contadorLibros"></h4>
+		<div class="container mt-3">
+			<div class="row">
+				<!-- Contenedor para el formulario de selección de género -->
+				<div class="col-12 col-md-6">
+					<form action="/ruta_tu_servidor" method="post">
+						<div class="form-group">
+							<label for="genero" class="contadorLibros mb-1">Género:</label>
+							<select class="form-control select-short" name="genero" id="genero">
+								<option value="all" selected>Genero</option>
+								<option value="fantasia">Fantasía</option>
+								<option value="zombies">Zombies</option>
+								<option value="ciencia_ficcion">Ciencia Ficción</option>
+								<option value="terror">Terror</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				<!-- Contenedor para el formulario de filtrar por páginas -->
+				<div class="col-12 col-md-6">
+					<form>
+						<div class="form-group">
+							<label for="filtroPaginas" class="contadorLibros mb-1">Filtrar por número de páginas:</label>
+							<input type="number" class="form-control" id="filtroPaginas" name="filtroPaginas"
+								placeholder="Ingresa número de páginas">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Fila principal -->
+		<div class="row mt-4">
 			<!-- Contenedor de libros. -->
 			<div class="col-md-8">
 				<div class="row" id="colgar">
