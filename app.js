@@ -2,6 +2,7 @@ let libreriaArr = [];
 let listaLecturaArr = [];
 
 // * Apartado 1 - Cargar Libros
+
 const cargarLibros = async () => {
 	const respuesta = await fetch("books.json");
 	const datos = await respuesta.json();
@@ -12,6 +13,8 @@ const cargarLibros = async () => {
 
 	actualizarLibros();
 };
+
+// * Apartado 4 - Sincronizacion de estado
 
 //TODO Funcion principal del ejercicio, actualiza la libreria, la lista de lectura y los contadores de ambos
 function actualizarLibros() {
@@ -52,11 +55,11 @@ function actualizarLibros() {
 	});
 	//Lo colgamos del div correspondiente del html
 	document.getElementById('colgar-lista-lectura').innerHTML = libroLectura;
-
 	vincularEventListeners();
 }
 
-//* Apartado 2 - Creacion de la lista de lectura
+// * Apartado 2 - Creacion de la lista de lectura
+
 //? Codigo para añadir a la lista de lectura
 //TODO Funcion para cuando se añade un libro a la lista
 function anadirLista(libro) {
@@ -68,7 +71,6 @@ function anadirLista(libro) {
 		console.error("Libro no encontrado");
 	}
 }
-
 
 //TODO Actualizar la lista de los arrays LibreriaArr y listaLecturaArr
 function meterListaLectura(posicion) {
@@ -96,6 +98,40 @@ function sacarListaLectura(posicion) {
 	actualizarLibros();
 }
 
+// * Apartado 3 - Filtrado de Libros por Género
+
+//TODO Ordena los libros por genero
+function ordenarPorGenero(selectedValue) {
+	console.log('Opción seleccionada:', selectedValue);
+	let contador = 0;
+	let librosHTML = "";
+	libreriaArr.forEach((libro) => {
+		if (libro.genre === selectedValue) {
+			contador++;
+			librosHTML += `
+		<div class="col-md-4 col-sm-6 mb-4">
+			<div class="border p-3 d-flex flex-column align-items-center">
+				<img class="img-fluid rounded mb-2" src="${libro.cover}">
+				<h5 class="font-weight-bold titulo-libro text-center">${libro.title}</h5>
+				<p class="text-center">${libro.genre}</p>
+				<button class="btn btn-primary mt-auto agregar-lista" value=${libro.ISBN}>Añadir</button>
+			</div>
+		</div>
+		`;
+		}
+
+	});
+	document.getElementById("colgar-libros").innerHTML = librosHTML;
+	document.getElementById('cantidad-libros-genero').textContent = `Hay ${contador} libros de ${selectedValue}`;
+}
+
+//TODO Evento para cada option
+const generoSeleccionado = document.getElementById('filtrar-genero');
+generoSeleccionado.addEventListener('change', (event) => {
+	const selectedValue = generoSeleccionado.value;
+	ordenarPorGenero(selectedValue);
+});
+
 //TODO Vincular eventos a cada boton
 function vincularEventListeners() {
 	//Añadir evento click por cada boton de la libreria
@@ -114,5 +150,3 @@ function vincularEventListeners() {
 //! Flujo del programa
 cargarLibros();
 console.log(libreriaArr);
-
-/*btnEliminarLista.addEventListener("click", eliminarLista);*/
