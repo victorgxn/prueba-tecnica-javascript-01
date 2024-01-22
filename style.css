@@ -32,3 +32,15 @@ h1 {
   width: 200px;
   height: 300px;
 }
+
+#colgar-lista-lectura img {
+  width: 100px;
+  height: 150px;
+  font-size: 0.5rem;
+}
+
+.titulo-libro-lista {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: white;
+}
