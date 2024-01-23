@@ -107,7 +107,7 @@ function ordenarPorGenero(selectedValue) {
 	let librosHTML = "";
 	libreriaArr.forEach((libro) => {
 		console.log(libro.genre);
-		if (libro.genre == selectedValue) {
+		if (libro.genre === selectedValue && selectedValue !== 'todos-los-generos') {
 			contador++;
 			librosHTML += `
 		<div class="col-md-4 col-sm-6 mb-4">
@@ -119,11 +119,17 @@ function ordenarPorGenero(selectedValue) {
 			</div>
 		</div>
 		`;
+		} else {
+			actualizarLibros();
 		}
 
 	});
-	document.getElementById("colgar-libros").innerHTML = librosHTML;
-	document.getElementById('cantidad-libros-genero').textContent = `Hay ${contador} libros de ${selectedValue}`;
+	if (librosHTML !== "") {
+		document.getElementById("colgar-libros").innerHTML = librosHTML;
+		document.getElementById('cantidad-libros-genero').textContent = `Hay ${contador} libros de ${selectedValue}`;
+	} else {
+		document.getElementById('cantidad-libros-genero').textContent = "";
+	}
 }
 
 //TODO Evento para cada option
@@ -150,4 +156,4 @@ function vincularEventListeners() {
 
 //! Flujo del programa
 cargarLibros();
-console.log(libreriaArr);
+
