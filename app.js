@@ -106,7 +106,8 @@ function ordenarPorGenero(selectedValue) {
 	let contador = 0;
 	let librosHTML = "";
 	libreriaArr.forEach((libro) => {
-		if (libro.genre === selectedValue) {
+		console.log(libro.genre);
+		if (libro.genre == selectedValue) {
 			contador++;
 			librosHTML += `
 		<div class="col-md-4 col-sm-6 mb-4">
